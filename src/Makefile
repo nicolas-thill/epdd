@@ -22,6 +22,8 @@ SOURCES_C = ../lib/pd-comport/comport.c \
     ../lib/pd-mrpeach/osc/packOSC.c \
     ../lib/pd-mrpeach/osc/unpackOSC.c \
     ../lib/pd-mrpeach/osc/routeOSC.c \
+    ../lib/pd-mrpeach/slip/slipdec.c \
+    ../lib/pd-mrpeach/slip/slipenc.c \
 
 SOURCES_CXX = main.cpp PdObject.cpp RtAudio.cpp
 

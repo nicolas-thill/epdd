@@ -24,6 +24,9 @@ extern "C" {
    void unpackOSC_setup(void);
    void routeOSC_setup(void);
 
+   void slipdec_setup(void);
+   void slipenc_setup(void);
+
 }
 
 RtAudio audio;
@@ -54,6 +57,9 @@ void init(){
    packOSC_setup();
    unpackOSC_setup();
    routeOSC_setup();
+
+   slipdec_setup();
+   slipenc_setup();
 
    // receive messages from pd
    lpd.setReceiver(&pdObject);
