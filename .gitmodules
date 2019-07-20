@@ -1,3 +1,6 @@
 [submodule "lib/libpd"]
 	path = lib/libpd
 	url = https://github.com/libpd/libpd.git
+[submodule "lib/pd-comport"]
+	path = lib/pd-comport
+	url = https://git.iem.at/pd/comport.git
