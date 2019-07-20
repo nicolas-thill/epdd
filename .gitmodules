@@ -1,0 +1,3 @@
+[submodule "lib/libpd"]
+	path = lib/libpd
+	url = https://github.com/libpd/libpd.git
