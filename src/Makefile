@@ -1,6 +1,6 @@
 LIBPD_DIR = ../lib/libpd
-LIBPD = $(LIBPD_DIR)/libs/libpd.so
-#LIBPD = -L $(LIBPD_DIR)/libs -lpd
+#LIBPD = $(LIBPD_DIR)/libs/libpd.so
+LIBPD = -L $(LIBPD_DIR)/libs -lpd
 
 CFLAGS = -O3
 
@@ -38,7 +38,7 @@ TARGET = epdd
 	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(DEFS) $(INCS)
 
 $(TARGET): ${SOURCES_C:.c=.o} ${SOURCES_CXX:.cpp=.o}
-	g++ -o $(TARGET) $^ $(LDFLAGS) $(LIBPD) $(LIBS)
+	$(CXX) -o $(TARGET) $^ $(LDFLAGS) $(LIBPD) $(LIBS)
 
 clean:
 	rm -f *.o $(TARGET)
