@@ -566,6 +566,8 @@ class RtAudio
   //! Specify whether warning messages should be printed to stderr.
   void showWarnings( bool value = true ) throw();
 
+  void waitStream( void );
+
  protected:
 
   void openRtApi( RtAudio::Api api );
@@ -689,6 +691,7 @@ public:
   virtual void startStream( void ) = 0;
   virtual void stopStream( void ) = 0;
   virtual void abortStream( void ) = 0;
+  void waitStream( void );
   long getStreamLatency( void );
   unsigned int getStreamSampleRate( void );
   virtual double getStreamTime( void );

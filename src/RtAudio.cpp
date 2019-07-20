@@ -211,6 +211,11 @@ void RtAudio :: openStream( RtAudio::StreamParameters *outputParameters,
                              userData, options, errorCallback );
 }
 
+void RtAudio :: waitStream( void )
+{
+  return rtapi_->waitStream();
+}
+
 // *************************************************** //
 //
 // Public RtApi definitions (see end of file for
@@ -344,6 +349,11 @@ void RtApi :: closeStream( void )
 {
   // MUST be implemented in subclasses!
   return;
+}
+
+void RtApi :: waitStream( void )
+{
+  pthread_join( stream_.callbackInfo.thread, NULL );
 }
 
 bool RtApi :: probeDeviceOpen( unsigned int /*device*/, StreamMode /*mode*/, unsigned int /*channels*/,
