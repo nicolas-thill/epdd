@@ -25,7 +25,7 @@ SOURCES_C = ../lib/pd-comport/comport.c \
     ../lib/pd-mrpeach/slip/slipdec.c \
     ../lib/pd-mrpeach/slip/slipenc.c \
 
-SOURCES_CXX = main.cpp PdObject.cpp RtAudio.cpp
+SOURCES_CXX = main.cpp RtAudio.cpp
 
 TARGET = pdtest
 

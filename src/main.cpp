@@ -14,7 +14,6 @@
 
 #include "PdBase.hpp"
 #include "RtAudio.h"
-#include "PdObject.h"
 
 extern "C" {
 
@@ -31,7 +30,6 @@ extern "C" {
 
 RtAudio audio;
 pd::PdBase lpd;
-PdObject pdObject;
 
 int audioCallback(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *userData)
 {
@@ -62,10 +60,6 @@ void init(char *pd_file, char *pd_dir)
 	slipdec_setup();
 	slipenc_setup();
 
-	// receive messages from pd
-	lpd.setReceiver(&pdObject);
-	lpd.subscribe("cursor");
-
 	// send DSP 1 message to pd
 	lpd.computeAudio(true);
 
@@ -74,7 +68,7 @@ void init(char *pd_file, char *pd_dir)
 
 	// use the RtAudio API to connect to the default audio device
 	if (audio.getDeviceCount() == 0) {
-		std::cout << "There are no available sound devices." << std::endl;
+		std::cerr << "ERROR: no available sound devices." << std::endl;
 		exit(1);
 	}
 
@@ -107,10 +101,7 @@ int main (int argc, char *argv[])
 
 	init(argv[1], argv[2]);
 
-	// keep the program alive until it's killed with Ctrl+C
 	while (1) {
-		lpd.receiveMessages();
-		lpd.sendFloat("FromCpp", 578);
 		usleep(100);
 	}
 
