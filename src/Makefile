@@ -27,7 +27,7 @@ SOURCES_C = ../lib/pd-comport/comport.c \
 
 SOURCES_CXX = main.cpp RtAudio.cpp
 
-TARGET = pdtest
+TARGET = epdd
 
 .PHONY: clean
 
