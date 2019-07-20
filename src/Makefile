@@ -17,16 +17,21 @@ INCS= \
 
 LIBS = -lasound -pthread
 
+SOURCES_C = ../lib/pd-comport/comport.c
+
 SOURCES_CXX = main.cpp PdObject.cpp RtAudio.cpp
 
 TARGET = pdtest
 
 .PHONY: clean
 
+%.o: %.c
+	$(CC) -c -o $@ $< $(CFLAGS) $(DEFS) $(INCS)
+
 %.o: %.cpp
 	$(CXX) -c -o $@ $< $(CFLAGS) $(CXXFLAGS) $(DEFS) $(INCS)
 
-$(TARGET): ${SOURCES_CXX:.cpp=.o}
+$(TARGET): ${SOURCES_C:.c=.o} ${SOURCES_CXX:.cpp=.o}
 	g++ -o $(TARGET) $^ $(LDFLAGS) $(LIBPD) $(LIBS)
 
 clean:

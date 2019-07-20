@@ -16,6 +16,12 @@
 #include "RtAudio.h"
 #include "PdObject.h"
 
+extern "C" {
+
+   void comport_setup(void);
+
+}
+
 RtAudio audio;
 pd::PdBase lpd;
 PdObject pdObject;
@@ -38,6 +44,8 @@ void init(){
       std::cerr << "Could not init pd" << std::endl;
       exit(1);
    }
+
+   comport_setup();
 
    // receive messages from pd
    lpd.setReceiver(&pdObject);
