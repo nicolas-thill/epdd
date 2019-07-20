@@ -97,6 +97,7 @@ int main (int argc, char *argv[])
 {
 	if (argc != 3) {
 		std::cerr << "ERROR: invalid arguments" << std::endl;
+		exit(1);
 	}
 
 	init(argv[1], argv[2]);
