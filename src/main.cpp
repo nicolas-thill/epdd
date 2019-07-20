@@ -42,7 +42,7 @@ int audioCallback(void *outputBuffer, void *inputBuffer, unsigned int nBufferFra
    return 0;
 }
 
-void init(){
+void init(char *pd_file, char *pd_dir){
    unsigned int sampleRate = 44100;
    unsigned int bufferFrames = 128;
 
@@ -69,8 +69,7 @@ void init(){
    lpd.computeAudio(true);
 
    // load the patch
-   pd::Patch patch = lpd.openPatch("pdtest.pd", ".");
-   std::cout << patch << std::endl;
+   pd::Patch patch = lpd.openPatch(pd_file, pd_dir);
 
    // use the RtAudio API to connect to the default audio device
    if(audio.getDeviceCount()==0){
@@ -100,7 +99,10 @@ void init(){
 
 
 int main (int argc, char *argv[]) {
-   init();
+   if (argc != 3) {
+      std::cerr << "ERROR: invalid arguments" << std::endl;
+   }
+   init(argv[1], argv[2]);
 
    // keep the program alive until it's killed with Ctrl+C
    while(1){
