@@ -20,6 +20,10 @@ extern "C" {
 
    void comport_setup(void);
 
+   void packOSC_setup(void);
+   void unpackOSC_setup(void);
+   void routeOSC_setup(void);
+
 }
 
 RtAudio audio;
@@ -46,6 +50,10 @@ void init(){
    }
 
    comport_setup();
+
+   packOSC_setup();
+   unpackOSC_setup();
+   routeOSC_setup();
 
    // receive messages from pd
    lpd.setReceiver(&pdObject);

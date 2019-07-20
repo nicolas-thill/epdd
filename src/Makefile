@@ -13,11 +13,15 @@ INCS= \
     -I$(LIBPD_DIR)/libpd_wrapper \
     -I$(LIBPD_DIR)/libpd_wrapper/util \
     -I$(LIBPD_DIR)/cpp \
-    -I./src
+    -I./src \
+    -I../lib/pd-mrpeach/osc
 
 LIBS = -lasound -pthread
 
-SOURCES_C = ../lib/pd-comport/comport.c
+SOURCES_C = ../lib/pd-comport/comport.c \
+    ../lib/pd-mrpeach/osc/packOSC.c \
+    ../lib/pd-mrpeach/osc/unpackOSC.c \
+    ../lib/pd-mrpeach/osc/routeOSC.c \
 
 SOURCES_CXX = main.cpp PdObject.cpp RtAudio.cpp
 
