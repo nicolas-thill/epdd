@@ -9,12 +9,12 @@ PROG:=src/epdd
 all: $(PROG)
 
 clean:
-	make -C $(LIBPD_DIR) clean
+	$(MAKE) -C $(LIBPD_DIR) clean
 	rm -f $(LIBPD)
-	make -C src clean
+	$(MAKE) -C src clean
 
 $(LIBPD):
-	make -C $(LIBPD_DIR) OPT_CFLAGS="$(LIBPD_CFLAGS)" UTIL=true EXTRA=true
+	$(MAKE) -C $(LIBPD_DIR) OPT_CFLAGS="$(LIBPD_CFLAGS)" UTIL=true EXTRA=true
 
 $(PROG): $(LIBPD)
-	make -C src
+	$(MAKE) -C src CFLAGS="$(PROG_CFLAGS)"
