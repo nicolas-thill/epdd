@@ -4,3 +4,6 @@
 [submodule "lib/pd-comport"]
 	path = lib/pd-comport
 	url = https://git.iem.at/pd/comport.git
+[submodule "lib/pd-mrpeach"]
+	path = lib/pd-mrpeach
+	url = https://github.com/reduzent/pd-mrpeach.git
