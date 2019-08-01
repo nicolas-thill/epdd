@@ -4,7 +4,7 @@
 
 1. Clone this repository
 ```
-clone https://github.com/psycho-nico/epdd.git
+git clone https://github.com/nicolas-thill/epdd.git
 ```
 2. Download appropriate SDK
 ```
