@@ -4,7 +4,7 @@
 
 1. Clone this repository
 ```
-git clone https://github.com/nicolas-thill/epdd.git
+git clone --recurse-submodules https://github.com/nicolas-thill/epdd.git
 ```
 2. Download appropriate SDK
 ```
